@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { evaluateFloor } = require('./src/evaluate-floor');
+const { basementPosition } = require('./src/basement-position');
 
 const main = function () {
 
@@ -7,8 +8,14 @@ const main = function () {
   const instructions = Array.from(rawInstructions);
   const navigationManual = { "(": 1, ")": -1 };
 
+  // first part
   const santaFloorNumber = evaluateFloor(instructions, navigationManual);
-  console.log("santa floor number is", santaFloorNumber);
+  console.log("Santa is in floor", santaFloorNumber);
+
+  // second part
+  const basementNumber = basementPosition(instructions, navigationManual)
+  console.log("Santa enter the basement at character position", basementNumber);
+
 
 };
 
