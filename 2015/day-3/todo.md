@@ -19,7 +19,12 @@ santa.moveWest();
 santa.position();
 
 ## instructor
-const navigation = {"<": "left",">": right};
+const navigation = {
+  "^":north,
+  "v":south,
+  ">":"east",
+  "<":"west"
+  };
 
 const instructor = new Instructor(santa,navigation);
 instructor.instruct(instruction);
