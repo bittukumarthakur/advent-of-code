@@ -10,13 +10,13 @@
 ## santa
 initialPosition = {x: 0, y: 0};
 
-const santa = new Santa(initialPosition)
+const santa = new Santa(initialPosition)✅
 
-santa.moveNorth();
-santa.moveSouth();
-santa.moveEast();
-santa.moveWest();
-santa.position();
+santa.moveNorth();✅
+santa.moveSouth();✅
+santa.moveEast();✅
+santa.moveWest();✅
+santa.position();✅
 
 ## instructor
 const navigation = {
