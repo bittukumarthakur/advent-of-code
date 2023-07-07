@@ -7,7 +7,8 @@ class Instructor {
     this.#santa = santa;
     this.#navigation = navigation;
     this.#numberOfHouse = 1;
-    this.#visitedHousePositions = { "0_0": { x: 0, y: 0 } };
+    this.
+      this.#visitedHousePositions = { "0_0": { x: 0, y: 0 } };
   }
 
   instruct([...instructions]) {
