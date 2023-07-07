@@ -11,7 +11,7 @@ describe("Santa", () => {
     deepStrictEqual({ x: 0, y: 0 }, santa.getPosition());
   });
 
-  it("should move to north.", () => {
+  it("should move to north by one house.", () => {
     const initialPosition = { x: 0, y: 0 };
     const santa = new Santa(initialPosition);
 
