@@ -20,12 +20,29 @@ santa.position();✅
 
 ## instructor
 const navigation = {
-  "^":north,
-  "v":south,
-  ">":"east",
-  "<":"west"
-  };
+  "^": "north",
+  "v": "south",
+  ">": "east",
+  "<": "west"
+};
+
+const navigation = {
+  "north": "^", 
+  "south": "v", 
+  "east": ">", 
+  "west": "<"
+};
 
 const instructor = new Instructor(santa,navigation);
 instructor.instruct(instruction);
 instructor.numberOfHouseVisited();
+
+## Locations
+
+const houseLoactions = new apnaSet();
+
+key => x_y
+value => {x:0, y:0};
+
+
+

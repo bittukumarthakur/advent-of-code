@@ -6,29 +6,29 @@ class Santa {
     this.#position = initialPosition;
   }
 
-  position() {
-    return this.#position;
-  }
-
   #move(delta) {
     this.#position.x += delta.x;
     this.#position.y += delta.y;
   }
 
+  getPosition() {
+    return this.#position;
+  }
+
   moveNorth() {
-    this.#move({ x: 0, y: 1 })
+    this.#move({ x: 0, y: 1 });
   }
 
   moveSouth() {
-    this.#move({ x: 0, y: -1 })
+    this.#move({ x: 0, y: -1 });
   }
 
   moveEast() {
-    this.#move({ x: 1, y: 0 })
+    this.#move({ x: 1, y: 0 });
   }
 
   moveWest() {
-    this.#move({ x: -1, y: 0 })
+    this.#move({ x: -1, y: 0 });
   }
 }
 
