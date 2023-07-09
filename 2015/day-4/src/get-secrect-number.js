@@ -14,7 +14,6 @@ const getSecretNumber = function (secretKey, prifix) {
 
     const hashCode = md5(md5String);
     hashCodePrifix = hashCode.slice(0, prifix.length);
-
   }
 
   return secretNumber;
