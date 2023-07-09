@@ -1,19 +1,19 @@
 const { it, describe } = require("node:test");
 const { deepStrictEqual } = require("assert");
-const { Santa } = require("../src/santa.js")
+const { worker } = require("../src/santa.js")
 
-describe("Santa", () => {
+describe("worker", () => {
 
   it("should return current position.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     deepStrictEqual({ x: 0, y: 0 }, santa.getPosition());
   });
 
   it("should move to north by one house.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     santa.moveNorth();
 
@@ -22,7 +22,7 @@ describe("Santa", () => {
 
   it("should move to south.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     santa.moveSouth();
 
@@ -31,7 +31,7 @@ describe("Santa", () => {
 
   it("should move to east.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     santa.moveEast();
 
@@ -40,7 +40,7 @@ describe("Santa", () => {
 
   it("should move to west.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     santa.moveWest();
 
@@ -49,7 +49,7 @@ describe("Santa", () => {
 
   it("should move in given multiple direction.", () => {
     const initialPosition = { x: 0, y: 0 };
-    const santa = new Santa(initialPosition);
+    const santa = new worker(initialPosition);
 
     santa.moveNorth();
     santa.moveEast();

@@ -1,4 +1,4 @@
-class Santa {
+class worker {
   #position
 
   constructor(initialPosition) {
@@ -31,4 +31,4 @@ class Santa {
   }
 }
 
-exports.Santa = Santa;
+exports.worker = worker;

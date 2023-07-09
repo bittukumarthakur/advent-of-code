@@ -2,10 +2,15 @@ class Instructor {
   #santa
   #navigationSymbol
   #visitedHousePositions
+  #workers
 
-  constructor(santa, navigationSymbol) {
-    this.#santa = santa;
+  constructor(navigationSymbol) {
     this.#navigationSymbol = navigationSymbol;
+    this.#workers = [];
+  }
+
+  addWorker(worker) {
+    this.#workers.push(worker);
     this.#visitedHousePositions = { "0_0": { x: 0, y: 0 } };
   }
 
@@ -13,32 +18,27 @@ class Instructor {
     return !Object.values(this.#navigationSymbol).includes(instruction);
   }
 
-  #updateVisistedHousePosition() {
-    const currentHouseLocation = this.#santa.getPosition();
-    const locationKey = this.#createLocationKey(currentHouseLocation);
-
-    this.#visitedHousePositions[locationKey] = currentHouseLocation;
+  #updateVisistedHousePosition(position) {
+    const locationKey = this.#createLocationKey(position);
+    this.#visitedHousePositions[locationKey] = position;
   }
 
-  #createLocationKey(currentHouseLocation) {
-    return `${currentHouseLocation.x}_${currentHouseLocation.y}`;
+  #createLocationKey(location) {
+    return `${location.x}_${location.y}`;
   }
 
-  #moveSanta(instruction) {
-
-
-
+  #moveWorker(worker, instruction) {
     switch (instruction) {
-      case this.#navigationSymbol.north: { this.#santa.moveNorth(); }
+      case this.#navigationSymbol.north: { worker.moveNorth(); }
         break;
 
-      case this.#navigationSymbol.south: { this.#santa.moveSouth(); }
+      case this.#navigationSymbol.south: { worker.moveSouth(); }
         break;
 
-      case this.#navigationSymbol.east: { this.#santa.moveEast(); }
+      case this.#navigationSymbol.east: { worker.moveEast(); }
         break;
 
-      case this.#navigationSymbol.west: { this.#santa.moveWest(); }
+      case this.#navigationSymbol.west: { worker.moveWest(); }
         break;
 
       default: return;
@@ -46,12 +46,16 @@ class Instructor {
   }
 
   instruct([...instructions]) {
-    instructions.forEach((instruction) => {
+    instructions.forEach((instruction, index) => {
       if (this.#isInvalidInstruction(instruction)) {
         return;
-      }
-      this.#moveSanta(instruction);
-      this.#updateVisistedHousePosition();
+      };
+
+      const workerIndex = index % this.#workers.length;
+      const worker = this.#workers[workerIndex];
+
+      this.#moveWorker(worker, instruction);
+      this.#updateVisistedHousePosition(worker.getPosition());
     });
   }
 
