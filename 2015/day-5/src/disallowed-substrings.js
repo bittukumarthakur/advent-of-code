@@ -1,18 +1,8 @@
-const isContain = function (line, substring) {
-  return (line.match(substring) !== null);
-};
-
-const isContainDisallowedSubstrings = function (text) {
+const areContainDisallowedSubstrings = function (text) {
   const disallowedSubstrings = ["ab", "cd", "pq", "xy"];
+  const disallowedSubstring =  disallowedSubstrings.find(substring => text.includes(substring));
 
-  for (const substring of disallowedSubstrings) {
-    if (isContain(text, substring)) {
-      return true;
-    };
-
-  };
-
-  return false;
+  return disallowedSubstring !== undefined;
 };
 
-exports.isContainDisallowedSubstrings = isContainDisallowedSubstrings
+exports.areContainDisallowedSubstrings = areContainDisallowedSubstrings

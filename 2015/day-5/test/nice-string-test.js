@@ -1,6 +1,6 @@
 const { it, describe } = require("node:test");
 const assert = require("assert");
-const { isNiceString } = require("../src/isNiceString.js")
+const { isNiceString, isNicerString } = require("../src/nice-string.js")
 
 describe("isNiceString", () => {
   it("should be nice string.", () => {
@@ -14,4 +14,16 @@ describe("isNiceString", () => {
     assert.ok(!isNiceString("dvszwmarrgswjxmb"));
   });
 
+});
+
+describe("isNicerString", () => {
+  it("should be nicer string.", () => {
+    assert.ok(isNicerString("qjhvhtzxzqqjkmpb"));
+    assert.ok(isNicerString("xxyxx"));
+  });
+
+  it("should not be nicer string.", () => {
+    assert.ok(!isNicerString("uurcxstgmygtbstg"));
+    assert.ok(!isNicerString("ieodomkazucvgmuy"));
+  });
 });

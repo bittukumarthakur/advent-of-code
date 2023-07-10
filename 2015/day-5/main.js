@@ -1,5 +1,5 @@
 const { readFileSync } = require("fs");
-const { isNiceString } = require("./src/isNiceString");
+const { countStrings, isNiceString, isNicerString } = require("./src/nice-string");
 
 const readSampleInput = () => {
   return readFileSync("./resources/sample.txt", "utf8");
@@ -7,11 +7,12 @@ const readSampleInput = () => {
 
 const main = function () {
   const text = readSampleInput();
-  const lines = text.split("\n");
 
   // first part
-  const niceStrings = lines.filter(isNiceString);
-  console.log("number of nice strings are:", niceStrings.length);
+  console.log("count of nice strings:", countStrings(isNiceString, text));
+
+  // second part
+  console.log("count of nicer strings:", countStrings(isNicerString, text));
 };
 
 main();

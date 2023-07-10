@@ -1,6 +1,5 @@
-const isCointainConscutiveSameLetter = function (text) {
+const isCointainConsecutiveSameLetter = function (text) {
   let previousLetter = "";
-
 
   for (let index = 0; index < text.length; index++) {
     const letter = text[index];
@@ -15,4 +14,4 @@ const isCointainConscutiveSameLetter = function (text) {
   return false;
 };
 
-exports.isCointainConscutiveSameLetter = isCointainConscutiveSameLetter;
+exports.isContainConsecutiveSameLetter = isCointainConsecutiveSameLetter;
