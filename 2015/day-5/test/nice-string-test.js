@@ -8,7 +8,7 @@ describe("isNiceString", () => {
     assert.ok(isNiceString("aaa"));
   });
 
-  it.skip("should be naughty string.", () => {
+  it("should be naughty string.", () => {
     assert.ok(!isNiceString("jchzalrnumimnmhp"));
     assert.ok(!isNiceString("haegwjzuvuyypxyu"));
     assert.ok(!isNiceString("dvszwmarrgswjxmb"));
