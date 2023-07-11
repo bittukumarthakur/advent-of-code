@@ -29,34 +29,34 @@ class Light {
 
 class SwitchBoard {
   #lights;
-  #methodsLookup;
+  #turnMethods;
 
   constructor(lights) {
     this.#lights = lights;
-    this.#methodsLookup = {
+    this.#turnMethods = {
       "on": (light) => light.turnOn(),
       "off": (light) => light.turnOff(),
       "toggle": (light) => light.toggle(),
     };
   }
 
-  method(name, lightsLocation) {
+  turn(name, lightsLocation) {
     lightsLocation.forEach((lightLocation) => {
       const light = this.#lights[lightLocation.x][lightLocation.y];
-      this.#methodsLookup[name](light);
+      this.#turnMethods[name](light);
     });
   };
 
   turnOnLights(lightsLocation) {
-    this.method("on", lightsLocation);
+    this.turn("on", lightsLocation);
   };
 
   turnOffLights(lightsLocation) {
-    this.method("off", lightsLocation);
+    this.turn("off", lightsLocation);
   }
 
   toggle(lightsLocation) {
-    this.method("toggle", lightsLocation);
+    this.turn("toggle", lightsLocation);
   }
 
   status() {
@@ -77,9 +77,15 @@ class SwitchBoard {
 
 class LightOperator {
   #switchBoard
+  #turnMethods
 
   constructor(switchBoard) {
     this.#switchBoard = switchBoard;
+    this.#turnMethods = {
+      "turn-on": (switchBoard, positions) => switchBoard.turnOnLights(positions),
+      "turn-off": (switchBoard, positions) => switchBoard.turnOffLights(positions),
+      "toggle": (switchBoard, positions) => switchBoard.toggle(positions)
+    };
   }
 
   #getPositions(startCorner, endCorner) {
@@ -98,21 +104,7 @@ class LightOperator {
     instructions.forEach((instruction) => {
       const positions = this.#getPositions(instruction.startCorner, instruction.endCorner);
 
-      if (instruction.name === "turn-on") {
-        this.#switchBoard.turnOnLights(positions);
-        return;
-      };
-
-      if (instruction.name === "turn-off") {
-        this.#switchBoard.turnOffLights(positions);
-        return;
-      };
-
-      if (instruction.name === "toggle") {
-        this.#switchBoard.toggle(positions);
-        return;
-      };
-
+      this.#turnMethods[instruction.name](this.#switchBoard, positions);
     });
   }
 

@@ -96,14 +96,14 @@ describe("lightOperator", () => {
     const switchBoard = new SwitchBoard([[light1, light2], [light3, light4]]);
     const lightOperator = new LightOperator(switchBoard);
     const instructions = [{
-      "name": "toggle",
+      "name": "turn-on",
       "startCorner": { x: 0, y: 0 },
       "endCorner": { x: 1, y: 1 }
     }];
 
     lightOperator.operate(instructions);
 
-    assert.strictEqual(lightOperator.status(), 4)
+    assert.strictEqual(lightOperator.status(), 4);
   });
 
 });
